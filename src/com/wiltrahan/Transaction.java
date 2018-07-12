@@ -14,11 +14,12 @@ public class Transaction {
 		this.amount = amount;
 		this.type = type;
 		
-		if(this.type == "deposit") {
-			deposit(this.checkingAccount, this.amount);
-		} else {
-			withdraw(this.checkingAccount, this.amount);
-		}
+//		if(this.type == "deposit") {
+//			//System.out.println("Problem here>>>");
+//			deposit(this.checkingAccount, this.amount);
+//		} else {
+//			withdraw(this.checkingAccount, this.amount);
+//		}
 	}
 	
 	public Transaction(SavingsAccount savingsAccount, double amount, String type) {
@@ -35,6 +36,7 @@ public class Transaction {
 
 	public void deposit(CheckingAccount checkingAccount, double amount) {
 		double balance = checkingAccount.getChkAcctBal() + amount;
+		System.out.println("Problem here too>>> " + balance);
 		checkingAccount.setChkAcctBal(balance);
 	}
 	
@@ -57,34 +59,16 @@ public class Transaction {
 		return checkingAccount;
 	}
 
-	public void setCheckingAccount(CheckingAccount checkingAccount) {
-		this.checkingAccount = checkingAccount;
-	}
-
 	public SavingsAccount getSavingsAccount() {
 		return savingsAccount;
-	}
-
-	public void setSavingsAccount(SavingsAccount savingsAccount) {
-		this.savingsAccount = savingsAccount;
 	}
 
 	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
-
 	public String getType() {
 		return type;
 	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-	
-	
 
 }

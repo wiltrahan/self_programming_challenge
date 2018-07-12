@@ -17,6 +17,7 @@ public class CheckingAccount {
 	}
 
 	public void setChkAcctBal(double chkAcctBal) {
+//		System.out.println("HOW BOUT DAH? " + chkAcctBal);
 		this.chkAcctBal = chkAcctBal;
 	}
 

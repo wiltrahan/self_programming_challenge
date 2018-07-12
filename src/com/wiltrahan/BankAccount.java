@@ -7,12 +7,14 @@ public class BankAccount {
 	private CheckingAccount checkingAcct;
 	private SavingsAccount savingsAcct;
 	
+	private Transaction transaction;
+	
 	private String name;
 	private String email;
 	private String phone;
 	private String branch;
 	
-	ArrayList<Transaction> trans = new ArrayList<Transaction>();
+	ArrayList<Transaction> trans;
 	
 	public BankAccount(CheckingAccount checkingAcct, String name, String email, String phone, String branch) {
 		this.checkingAcct = checkingAcct;
@@ -70,28 +72,25 @@ public class BankAccount {
 		return branch;
 	}
 	
-//	public void checkingTransQ(CheckingAccount checkingAccount, String type, double amount) {
-//		
-//		trans.add(new Transaction(checkingAccount, amount, type));
-//		
-//		for(Transaction t: trans) {
-//			System.out.println(t.getAmount());
-//		}
-//	
-//	}
 	
 	public void checkingTransQ(ArrayList<Transaction> trans) {
-	
+		
+		//Iterator<Transaction> itr = trans.iterator();
+
 		for(Transaction t: trans) {
-			new Transaction(t.getCheckingAccount(), t.getAmount(), t.getType());
+			if(t.getType() == "deposit") {
+				
+				transaction.deposit(t.getCheckingAccount(), t.getAmount());
+			}
 		}
 		
-//		trans.add(new Transaction(checkingAccount, amount, type));
-		
-		for(Transaction t: trans) {
-			System.out.println(t.getAmount());
-		}
-	
+//		while(itr.hasNext()) {
+//			transaction.deposit(itr.next().getCheckingAccount(), itr.next().getAmount());
+//		}
+//		for(int i = 0; i < trans.size() -1; i++) {
+//			transaction.deposit(trans.get(i).getCheckingAccount(), trans.get(i).getAmount());
+//		}
+
 	}
 	
 	public void savingsTransQ(SavingsAccount savingsAccount, String type, double amount) {
