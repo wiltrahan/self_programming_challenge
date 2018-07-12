@@ -1,5 +1,7 @@
 package com.wiltrahan;
 
+import java.util.ArrayList;
+
 public class BankAccount {
 	
 	private CheckingAccount checkingAcct;
@@ -10,6 +12,7 @@ public class BankAccount {
 	private String phone;
 	private String branch;
 	
+	ArrayList<Transaction> trans = new ArrayList<Transaction>();
 	
 	public BankAccount(CheckingAccount checkingAcct, String name, String email, String phone, String branch) {
 		this.checkingAcct = checkingAcct;
@@ -18,8 +21,7 @@ public class BankAccount {
 		this.phone = phone;
 		this.branch = branch;
 	}
-
-
+	
 	public BankAccount(SavingsAccount savingsAcct, String name, String email, String phone, String branch) {
 		this.savingsAcct = savingsAcct;
 		this.name = name;
@@ -28,54 +30,76 @@ public class BankAccount {
 		this.branch = branch;
 	}
 
-
 	public CheckingAccount getCheckingAcct() {
 		return checkingAcct;
 	}
-
 
 	public void setCheckingAcct(CheckingAccount checkingAcct) {
 		this.checkingAcct = checkingAcct;
 	}
 
-
 	public SavingsAccount getSavingsAcct() {
 		return savingsAcct;
 	}
-
 
 	public void setSavingsAcct(SavingsAccount savingsAcct) {
 		this.savingsAcct = savingsAcct;
 	}
 
-
 	public String getEmail() {
 		return email;
 	}
-
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
 	public String getPhone() {
 		return phone;
 	}
-
 
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
-
 	public String getName() {
 		return name;
 	}
 
-
 	public String getBranch() {
 		return branch;
+	}
+	
+//	public void checkingTransQ(CheckingAccount checkingAccount, String type, double amount) {
+//		
+//		trans.add(new Transaction(checkingAccount, amount, type));
+//		
+//		for(Transaction t: trans) {
+//			System.out.println(t.getAmount());
+//		}
+//	
+//	}
+	
+	public void checkingTransQ(ArrayList<Transaction> trans) {
+	
+		for(Transaction t: trans) {
+			new Transaction(t.getCheckingAccount(), t.getAmount(), t.getType());
+		}
+		
+//		trans.add(new Transaction(checkingAccount, amount, type));
+		
+		for(Transaction t: trans) {
+			System.out.println(t.getAmount());
+		}
+	
+	}
+	
+	public void savingsTransQ(SavingsAccount savingsAccount, String type, double amount) {
+		
+		trans.add(new Transaction(savingsAccount, amount, type));
+		
+		System.out.println(trans.size());
+
 	}
 	
 }

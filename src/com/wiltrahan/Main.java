@@ -1,5 +1,7 @@
 package com.wiltrahan;
 
+import java.util.ArrayList;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -8,14 +10,18 @@ public class Main {
 		CheckingAccount wilCheck = new CheckingAccount("555checking", 1000.00, 3.00);
 		
 		BankAccount wilBank = new BankAccount(wilCheck, "Wil Dough", "wil@us.gov", "672-0909", "Providence");
+
 		
 		System.out.println(wilBank.getCheckingAcct().getChkAcctBal());
 		
-		Transaction transaction = new Transaction();
+		ArrayList<Transaction> toTheQ = new ArrayList<Transaction>();
 		
-		transaction.deposit(wilBank.getCheckingAcct(), 900.00);
+		toTheQ.add(new Transaction(wilBank.getCheckingAcct(), 50.00, "deposit"));
+		toTheQ.add(new Transaction(wilBank.getCheckingAcct(), 150.00, "deposit"));
+		toTheQ.add(new Transaction(wilBank.getCheckingAcct(), 200.00, "deposit"));
 		
-		System.out.println(wilBank.getCheckingAcct().getChkAcctBal());
+		wilBank.checkingTransQ(toTheQ);
+		
 	}
 
 }
