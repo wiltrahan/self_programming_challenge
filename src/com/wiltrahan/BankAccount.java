@@ -1,6 +1,7 @@
 package com.wiltrahan;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BankAccount {
 	
@@ -14,7 +15,7 @@ public class BankAccount {
 	private String phone;
 	private String branch;
 	
-	ArrayList<Transaction> trans;
+	
 	
 	public BankAccount(CheckingAccount checkingAcct, String name, String email, String phone, String branch) {
 		this.checkingAcct = checkingAcct;
@@ -73,32 +74,35 @@ public class BankAccount {
 	}
 	
 	
-	public void checkingTransQ(ArrayList<Transaction> trans) {
+	public void checkingTransQ(List<Transaction> trans) {
 		
-		//Iterator<Transaction> itr = trans.iterator();
-
 		for(Transaction t: trans) {
-			if(t.getType() == "deposit") {
-				
-				transaction.deposit(t.getCheckingAccount(), t.getAmount());
-			}
+			System.out.println(t.getCheckingAccount() + " " + t.getAmount());
+
+			transaction.deposit(t.getCheckingAccount(), t.getAmount());
 		}
-		
-//		while(itr.hasNext()) {
-//			transaction.deposit(itr.next().getCheckingAccount(), itr.next().getAmount());
-//		}
-//		for(int i = 0; i < trans.size() -1; i++) {
-//			transaction.deposit(trans.get(i).getCheckingAccount(), trans.get(i).getAmount());
-//		}
 
 	}
 	
-	public void savingsTransQ(SavingsAccount savingsAccount, String type, double amount) {
+	public void transQ(CheckingAccount checkingAccount, double amount, String type) {
+		List<Transaction> trans = new ArrayList<>();
+		Transaction transaction = new Transaction(checkingAccount, amount, type);
+		trans.add(transaction);
 		
-		trans.add(new Transaction(savingsAccount, amount, type));
+		for(Transaction t: trans) {
+			System.out.println(t.getAmount());
+			transaction.deposit(t.getCheckingAccount(), t.getAmount());
+		}
 		
-		System.out.println(trans.size());
-
+		//return trans;
 	}
+	
+//	public void savingsTransQ(SavingsAccount savingsAccount, String type, double amount) {
+//		
+//		trans.add(new Transaction(savingsAccount, amount, type));
+//		
+//		System.out.println(trans.size());
+//
+//	}
 	
 }

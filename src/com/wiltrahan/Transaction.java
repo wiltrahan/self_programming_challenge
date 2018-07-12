@@ -27,19 +27,20 @@ public class Transaction {
 		this.amount = amount;
 		this.type = type;
 		
-		if(this.type == "deposit") {
-			deposit(this.savingsAccount, this.amount);
-		} else {
-			withdraw(this.savingsAccount, this.amount);
-		}
+//		if(this.type == "deposit") {
+//			deposit(this.savingsAccount, this.amount);
+//		} else {
+//			withdraw(this.savingsAccount, this.amount);
+//		}
 	}
 
 	public void deposit(CheckingAccount checkingAccount, double amount) {
 		double balance = checkingAccount.getChkAcctBal() + amount;
-		System.out.println("Problem here too>>> " + balance);
+		//System.out.println("Problem here too>>> " + balance);
 		checkingAccount.setChkAcctBal(balance);
 	}
 	
+
 	public void deposit(SavingsAccount savingsAccount, double amount) {
 		double balance = savingsAccount.getSavAcctBal() + amount;
 		savingsAccount.setSavAcctBal(balance);
