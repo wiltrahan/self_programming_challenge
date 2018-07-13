@@ -8,8 +8,6 @@ public class BankAccount {
 	private CheckingAccount checkingAcct;
 	private SavingsAccount savingsAcct;
 	
-	private Transaction transaction;
-	
 	private String name;
 	private String email;
 	private String phone;
@@ -73,36 +71,32 @@ public class BankAccount {
 		return branch;
 	}
 	
-	
-	public void checkingTransQ(List<Transaction> trans) {
-		
-		for(Transaction t: trans) {
-			System.out.println(t.getCheckingAccount() + " " + t.getAmount());
-
-			transaction.deposit(t.getCheckingAccount(), t.getAmount());
-		}
-
-	}
-	
-	public void transQ(CheckingAccount checkingAccount, double amount, String type) {
+	public void chkTransQ(CheckingAccount checkingAccount, double amount, String type) {
 		List<Transaction> trans = new ArrayList<>();
 		Transaction transaction = new Transaction(checkingAccount, amount, type);
 		trans.add(transaction);
 		
 		for(Transaction t: trans) {
-			System.out.println(t.getAmount());
-			transaction.deposit(t.getCheckingAccount(), t.getAmount());
+			if(t.getType() == "deposit") {
+				transaction.deposit(t.getCheckingAccount(), t.getAmount());
+			} else {
+				transaction.withdraw(t.getCheckingAccount(), t.getAmount());
+			}			
 		}
-		
-		//return trans;
 	}
 	
-//	public void savingsTransQ(SavingsAccount savingsAccount, String type, double amount) {
-//		
-//		trans.add(new Transaction(savingsAccount, amount, type));
-//		
-//		System.out.println(trans.size());
-//
-//	}
+	public void savTransQ(SavingsAccount savingsAccount, double amount, String type) {
+		List<Transaction> trans = new ArrayList<>();
+		Transaction transaction = new Transaction(savingsAccount, amount, type);
+		trans.add(transaction);
+		
+		for(Transaction t: trans) {
+			if(t.getType() == "deposit") {
+				transaction.deposit(t.getSavingsAccount(), t.getAmount());
+			} else {
+				transaction.withdraw(t.getSavingsAccount(), t.getAmount());
+			}			
+		}
+	}
 	
 }
