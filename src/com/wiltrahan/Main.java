@@ -28,7 +28,11 @@ public class Main {
 		
 		wilBank.savTransQ(wilBank.getSavingsAcct(), 550.00, "deposit");
 		
-		System.out.println("After Savings Deposit " + wilBank.getSavingsAcct().getSavAcctBal());		
+		System.out.println("After Savings Deposit " + wilBank.getSavingsAcct().getSavAcctBal());
+		
+		wilBank.chkTransQ(wilBank.getCheckingAcct(), 100.00, "withdraw");
+		
+		System.out.println("After checking withdrawal " + wilBank.getCheckingAcct().getChkAcctBal());
 	}
 
 }
