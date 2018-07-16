@@ -18,6 +18,8 @@ public class Main {
 		
 		wilBank.chkTransQ(wilBank.getCheckingAcct(), 350.00, "withdraw");
 
+		
+		
 		System.out.println("After Checking Deposit " + wilBank.getCheckingAcct().getChkAcctBal());
 		
 		
@@ -30,9 +32,9 @@ public class Main {
 		
 		System.out.println("After Savings Deposit " + wilBank.getSavingsAcct().getSavAcctBal());
 		
-		wilBank.chkTransQ(wilBank.getCheckingAcct(), 100.00, "withdraw");
-		
-		System.out.println("After checking withdrawal " + wilBank.getCheckingAcct().getChkAcctBal());
+//		wilBank.chkTransQ(wilBank.getCheckingAcct(), 100.00, "withdraw");
+//		
+//		System.out.println("After checking withdrawal " + wilBank.getCheckingAcct().getChkAcctBal());
 	}
 
 }
